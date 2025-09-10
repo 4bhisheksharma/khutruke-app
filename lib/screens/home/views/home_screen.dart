@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+import 'package:khutruke/screens/home/views/main_screen.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      // appBar: AppBar(),
       bottomNavigationBar: ClipRRect(
         borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
         child: BottomNavigationBar(
@@ -45,6 +47,7 @@ class HomeScreen extends StatelessWidget {
           child: Icon(Icons.add),
         ),
       ),
+      body: MainScreen(),
     );
   }
 }
