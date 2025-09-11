@@ -2,25 +2,48 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 import 'package:khutruke/screens/home/views/main_screen.dart';
+import 'package:khutruke/screens/stats/stats_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int index = 0;
+  late Color selectedItem = Theme.of(context).colorScheme.primary;
+  Color unSelectedItem = Colors.grey;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(),
       bottomNavigationBar: ClipRRect(
         borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
         child: BottomNavigationBar(
+          onTap: (value) {
+            setState(() {
+              index = value;
+            });
+          },
           backgroundColor: Colors.white,
           showSelectedLabels: false,
           showUnselectedLabels: false,
 
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
             BottomNavigationBarItem(
-              icon: Icon(Icons.auto_graph_sharp),
+              icon: Icon(
+                Icons.home,
+                color: index == 0 ? selectedItem : unSelectedItem,
+              ),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.auto_graph_sharp,
+                color: index == 1 ? selectedItem : unSelectedItem,
+              ),
               label: 'Stats',
             ),
           ],
@@ -47,7 +70,7 @@ class HomeScreen extends StatelessWidget {
           child: Icon(Icons.add),
         ),
       ),
-      body: MainScreen(),
+      body: index == 0 ? MainScreen() : StatsScreen(),
     );
   }
 }
