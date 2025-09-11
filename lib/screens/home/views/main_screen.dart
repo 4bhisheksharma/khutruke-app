@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:khutruke/data/data.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -236,7 +237,7 @@ class MainScreen extends StatelessWidget {
             SizedBox(height: 20),
             Expanded(
               child: ListView.builder(
-                itemCount: 4,
+                itemCount: transactionData.length,
                 itemBuilder: (context, int i) {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 16),
@@ -259,19 +260,19 @@ class MainScreen extends StatelessWidget {
                                       width: 50,
                                       height: 50,
                                       decoration: BoxDecoration(
-                                        color: Colors.red,
+                                        color: transactionData[i]['color'],
                                         shape: BoxShape.circle,
                                       ),
                                     ),
                                     Icon(
-                                      Icons.food_bank_rounded,
+                                      transactionData[i]['icon'],
                                       color: Colors.white,
                                     ),
                                   ],
                                 ),
                                 SizedBox(width: 12),
                                 Text(
-                                  "Food",
+                                  transactionData[i]['name'],
                                   style: TextStyle(
                                     fontSize: 14,
                                     color: Theme.of(
@@ -283,9 +284,10 @@ class MainScreen extends StatelessWidget {
                               ],
                             ),
                             Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text(
-                                  "- \रू100.00",
+                                  transactionData[i]['totalAmount'],
                                   style: TextStyle(
                                     fontSize: 14,
                                     color: Theme.of(
@@ -295,7 +297,7 @@ class MainScreen extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  "Today",
+                                  transactionData[i]['date'],
                                   style: TextStyle(
                                     fontSize: 14,
                                     color: Theme.of(
