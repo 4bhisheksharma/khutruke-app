@@ -143,7 +143,7 @@ class MainScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Expenses",
+                                  "Income",
                                   style: TextStyle(
                                     fontSize: 14,
                                     color: Colors.white,
@@ -184,7 +184,7 @@ class MainScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Income",
+                                  "Expenses",
                                   style: TextStyle(
                                     fontSize: 14,
                                     color: Colors.white,

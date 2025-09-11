@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:khutruke/screens/stats/chart.dart';
 
 class StatsScreen extends StatelessWidget {
   const StatsScreen({super.key});
@@ -13,6 +14,12 @@ class StatsScreen extends StatelessWidget {
             Text(
               "Transactions",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 20),
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.width,
+              child: MyChart(),
             ),
           ],
         ),
