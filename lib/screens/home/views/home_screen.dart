@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:khutruke/screens/add_expense/views/add_expense.dart';
 import 'dart:math';
 
 import 'package:khutruke/screens/home/views/main_screen.dart';
@@ -52,7 +53,14 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         shape: CircleBorder(),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute<void>(
+              builder: (BuildContext context) => const AddExpense(),
+            ),
+          );
+        },
         child: Container(
           width: 80,
           height: 80,
