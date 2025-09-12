@@ -143,14 +143,16 @@ class _MychartState extends State<MyChart> {
     String text;
 
     if (value == 0) {
-      text = '1K';
+      text = '0K';
     } else if (value == 1) {
-      text = '2K';
+      text = '1K';
     } else if (value == 2) {
-      text = '3K';
+      text = '2K';
     } else if (value == 3) {
-      text = '4K';
+      text = '3K';
     } else if (value == 4) {
+      text = '4K';
+    } else if (value == 5) {
       text = '5K';
     } else {
       return Container();
