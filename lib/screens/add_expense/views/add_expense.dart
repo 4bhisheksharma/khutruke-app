@@ -57,10 +57,88 @@ class _AddExpenseState extends State<AddExpense> {
 
               SizedBox(height: 20),
               TextFormField(
+                readOnly: true,
+                onTap: () {
+                  // to display items
+                },
                 controller: categoryController,
                 decoration: InputDecoration(
                   label: Text("Category"),
                   prefixIcon: Icon(Icons.list_rounded, color: Colors.grey),
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      //to add function
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  "Add New Category",
+                                  style: TextStyle(fontSize: 20),
+                                ),
+                                SizedBox(height: 30),
+                                TextFormField(
+                                  // controller: nameController,
+                                  // readOnly: true,
+                                  decoration: InputDecoration(
+                                    label: Text("Name"),
+                                    prefixIcon: Icon(
+                                      Icons.subject,
+                                      color: Colors.grey,
+                                    ),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 30),
+                                TextFormField(
+                                  // controller: iconController,
+                                
+                                  decoration: InputDecoration(
+                                    label: Text("Icon (use emojies)"),
+                                    prefixIcon: Icon(
+                                      Icons.insert_emoticon_sharp,
+                                      color: Colors.grey,
+                                    ),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 30),
+                                TextFormField(
+                                  // controller: colorController,
+                                  // readOnly: true,
+                                  decoration: InputDecoration(
+                                    label: Text("Color"),
+                                    prefixIcon: Icon(
+                                      Icons.color_lens,
+                                      color: Colors.grey,
+                                    ),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 16),
+                                TextButton(
+                                  onPressed: () {
+                                    print("hi");
+                                  },
+                                  child: Text("Create"),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    icon: Icon(Icons.add, color: Colors.grey),
+                  ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
