@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:intl/intl.dart';
 
 class AddExpense extends StatefulWidget {
@@ -15,6 +16,8 @@ class _AddExpenseState extends State<AddExpense> {
   TextEditingController categoryController = TextEditingController();
   TextEditingController dateController = TextEditingController();
   DateTime selectDate = DateTime.now();
+
+  Color categoryColors = Colors.white;
 
   @override
   void initState() {
@@ -71,6 +74,7 @@ class _AddExpenseState extends State<AddExpense> {
                       showDialog(
                         context: context,
                         builder: (context) {
+                          // Color categoryColors = Colors.white;
                           return AlertDialog(
                             content: Column(
                               mainAxisSize: MainAxisSize.min,
@@ -97,7 +101,6 @@ class _AddExpenseState extends State<AddExpense> {
                                 SizedBox(height: 30),
                                 TextFormField(
                                   // controller: iconController,
-                                
                                   decoration: InputDecoration(
                                     label: Text("Icon (use emojies)"),
                                     prefixIcon: Icon(
@@ -111,9 +114,88 @@ class _AddExpenseState extends State<AddExpense> {
                                 ),
                                 SizedBox(height: 30),
                                 TextFormField(
+                                  onTap: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (ctx1) {
+                                        return AlertDialog(
+                                          content: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              ColorPicker(
+                                                pickerColor: categoryColors,
+                                                onColorChanged: (value) {
+                                                  setState(() {
+                                                    categoryColors = value;
+                                                  });
+                                                },
+                                              ),
+                                              SizedBox(
+                                                height: 35,
+                                                width: double.infinity,
+                                                child: TextButton(
+                                                  onPressed: () {
+                                                    print(categoryColors);
+                                                    Navigator.pop(ctx1);
+                                                  },
+                                                  style: TextButton.styleFrom(
+                                                    padding: EdgeInsets.zero,
+                                                    shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                            12,
+                                                          ),
+                                                    ),
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                  ),
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                            12,
+                                                          ),
+                                                      gradient: LinearGradient(
+                                                        colors: [
+                                                          Theme.of(context)
+                                                              .colorScheme
+                                                              .tertiary,
+                                                          Theme.of(context)
+                                                              .colorScheme
+                                                              .secondary,
+                                                          Theme.of(
+                                                            context,
+                                                          ).colorScheme.primary,
+                                                        ],
+                                                        transform:
+                                                            GradientRotation(
+                                                              pi / 4,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                    alignment: Alignment.center,
+                                                    child: const Text(
+                                                      "Choose",
+                                                      style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 16,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
                                   // controller: colorController,
-                                  // readOnly: true,
+                                  readOnly: true,
                                   decoration: InputDecoration(
+                                    isDense: true,
+                                    filled: true,
+                                    fillColor: categoryColors,
                                     label: Text("Color"),
                                     prefixIcon: Icon(
                                       Icons.color_lens,
@@ -126,10 +208,39 @@ class _AddExpenseState extends State<AddExpense> {
                                 ),
                                 SizedBox(height: 16),
                                 TextButton(
-                                  onPressed: () {
-                                    print("hi");
-                                  },
-                                  child: Text("Create"),
+                                  onPressed: () {},
+                                  style: TextButton.styleFrom(
+                                    padding: EdgeInsets.zero,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    backgroundColor: Colors.transparent,
+                                  ),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12),
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          Theme.of(
+                                            context,
+                                          ).colorScheme.tertiary,
+                                          Theme.of(
+                                            context,
+                                          ).colorScheme.secondary,
+                                          Theme.of(context).colorScheme.primary,
+                                        ],
+                                        transform: GradientRotation(pi / 4),
+                                      ),
+                                    ),
+                                    alignment: Alignment.center,
+                                    child: const Text(
+                                      "Add",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
